@@ -1,0 +1,29 @@
+# Enforce LF as line ending for consistency across environments
+* text=auto eol=lf
+
+# Binary files (should not be converted)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.mp4 binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Specific text-based files that should always use LF
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.md text eol=lf
+
+# Ignore auto-generated reports in language statistics
+playwright-report/* linguist-generated
+test-results/* linguist-generated
