@@ -13,6 +13,6 @@ export default defineConfig({
     baseURL: 'https://www.saucedemo.com',
     screenshot: 'on',
     video: 'on',
-    trace: 'retain-on-failure' // Enables trace viewer for failed tests
+    trace: 'retain-on-failure' // Automatically saves a trace file for failed tests to help diagnose issues
   },
 });
