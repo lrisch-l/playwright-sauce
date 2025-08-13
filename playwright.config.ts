@@ -8,11 +8,28 @@ export default defineConfig({
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }]
   ],
-  use: {
-    headless: true,
-    baseURL: 'https://www.saucedemo.com',
-    screenshot: 'on',
-    video: 'on',
-    trace: 'retain-on-failure' // Automatically saves a trace file for failed tests to help diagnose issues
-  },
+  projects: [
+    {
+      name: 'Chrome',
+      use: {
+        channel: 'chrome', // Uses installed Chrome
+        headless: true,
+        baseURL: 'https://www.saucedemo.com',
+        screenshot: 'on',
+        video: 'on',
+        trace: 'retain-on-failure'
+      }
+    },
+    {
+      name: 'Edge',
+      use: {
+        channel: 'msedge', // Uses installed Microsoft Edge
+        headless: true,
+        baseURL: 'https://www.saucedemo.com',
+        screenshot: 'on',
+        video: 'on',
+        trace: 'retain-on-failure'
+      }
+    }
+  ]
 });
