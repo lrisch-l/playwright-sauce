@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
+                // Install project dependencies and Playwright browsers
                 sh 'npm ci'
                 sh 'npx playwright install'
             }
@@ -11,6 +12,7 @@ pipeline {
 
         stage('Run tests') {
             steps {
+                // Run Playwright tests
                 sh 'npx playwright test'
             }
         }
@@ -18,11 +20,11 @@ pipeline {
 
     post {
         always {
-            // Arquiva os traces gerados
-            archiveArtifacts artifacts: '**/trace.zip', allowEmptyArchive: true
+            // Archive traces, videos, screenshots and reports
+            archiveArtifacts artifacts: '**/trace.zip, **/*.webm, **/*.png, **/test-results/**, **/playwright-report/**', allowEmptyArchive: true
         }
         failure {
-            // Opcional: salva screenshots ou relatórios em caso de falha
+            // Optionally archive additional artifacts on failure
             archiveArtifacts artifacts: '**/*.png, **/playwright-report/**', allowEmptyArchive: true
         }
     }
