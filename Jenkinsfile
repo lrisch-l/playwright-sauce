@@ -14,6 +14,10 @@ pipeline {
             steps {
                 // Run Playwright tests
                 sh 'npx playwright test'
+
+                // List all files and folders to help locate artifacts
+                sh 'ls -R > structure.txt'
+                archiveArtifacts artifacts: 'structure.txt'
             }
         }
     }
