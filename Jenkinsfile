@@ -5,6 +5,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
+                sh 'npx playwright install'
             }
         }
 
@@ -13,11 +14,11 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
+    }
 
-        stage('Generate test report') {
-            steps {
-                sh 'npx playwright show-report'
-            }
+    post {
+        always {
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
